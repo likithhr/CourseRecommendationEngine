@@ -61,7 +61,8 @@ def recommend_courses(req: UserRequest):
         X_scaled = scaler.transform(X)
 
         prediction = model.predict(X_scaled)
-        recommended_subject = label_encoders_subject.inverse_transform(prediction)[0]
+        recommended_subject = req.subject
+
 
         # 🧠 Filter top 5 courses for predicted subject
         top_courses = (
